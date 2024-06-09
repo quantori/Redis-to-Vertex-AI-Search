@@ -1,1 +1,2 @@
-# Redis-to-Vertex-AI-Search
+# Overview
+The app allows you to easily transfer your data from Redis DB to the Google Cloud Platform in full or incremental mode regardless of the data structure used in the source database (strings, hashes, lists, sets, etc.). It will allow to use full potential of your data with advanced features provided by the Google Cloud Platform such as AI-powered Vertex AI Search™ and Vertex AI Conversation™. Thus, you can interact with the data using natural language for analysis, queering and obtaining more complex information about the stored content.
