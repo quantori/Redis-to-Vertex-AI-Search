@@ -1,4 +1,4 @@
-FROM marketplace.gcr.io/google/debian10 AS build
+FROM marketplace.gcr.io/google/debian11 AS build
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends gettext
@@ -13,12 +13,12 @@ RUN cd /tmp/test \
 ADD schema.yaml /tmp/schema.yaml
 
 # Provide registry prefix and tag for default values for images.
-ARG REGISTRY
-ARG TAG
-RUN cat /tmp/schema.yaml \
-    | env -i "REGISTRY=$REGISTRY" "TAG=$TAG" envsubst \
-    > /tmp/schema.yaml.new \
-    && mv /tmp/schema.yaml.new /tmp/schema.yaml
+# ARG REGISTRY
+# ARG TAG
+# RUN cat /tmp/schema.yaml \
+#     | env -i "REGISTRY=$REGISTRY" "TAG=$TAG" envsubst \
+#     > /tmp/schema.yaml.new \
+#     && mv /tmp/schema.yaml.new /tmp/schema.yaml
 
 # Provide default value for tester image.
 ARG TESTER_IMAGE
