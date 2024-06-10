@@ -4,8 +4,8 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     app.kubernetes.io/name: "{{ .Release.Name }}"
-    app: {{ template "nginx.name" . }}
-    chart: {{ template "nginx.chart" . }}
+    app: {{ template "redis-to-vertex-ai-search.name" . }}
+    chart: {{ template "redis-to-vertex-ai-search.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
@@ -16,5 +16,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: {{ template "nginx.name" . }}
+    app: {{ template "redis-to-vertex-ai-search.name" . }}
     release: {{ .Release.Name }}

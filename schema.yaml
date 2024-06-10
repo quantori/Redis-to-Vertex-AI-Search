@@ -8,17 +8,17 @@ properties:
     type: string
     x-google-marketplace:
       type: NAMESPACE
-  imageNginx.image:
+  image.image:
     type: string
-    default: $REGISTRY/example/nginx:$TAG
+    default: gcr.io/silent-vim-415621/redis:$TAG
     x-google-marketplace:
       type: IMAGE
       image:
         generatedProperties:
           splitByColon:
-            before: imageNginx.repo
-            after: imageNginx.tag
+            before: image.repo
+            after: image.tag
 required:
 - name
 - namespace
-- imageNginx.image
+- image.image

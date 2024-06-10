@@ -4,12 +4,12 @@ metadata:
   name: {{ .Release.Name }}
   labels: &Labels
     app.kubernetes.io/name: "{{ .Release.Name }}"
-    app.kubernetes.io/component: nginx
-    app: {{ template "nginx.name" . }}
-    chart: {{ template "nginx.chart" . }}
+    app.kubernetes.io/component: redis-to-vertex-ai-search
+    app: {{ template "redis-to-vertex-ai-search.name" . }}
+    chart: {{ template "redis-to-vertex-ai-search.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    component: nginx
+    component: redis-to-vertex-ai-search
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -20,20 +20,12 @@ spec:
     spec:
       containers:
         - name: "{{ .Chart.Name }}"
-          image: "{{ .Values.imageNginx.repo }}:{{ .Values.imageNginx.tag }}"
-          imagePullPolicy: {{ .Values.imageNginx.pullPolicy }}
+          image: "{{ .Values.image.repo }}:{{ .Values.imageh.tag }}"
+          imagePullPolicy: {{ .Values.iamge.pullPolicy }}
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
