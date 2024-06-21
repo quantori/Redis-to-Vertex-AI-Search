@@ -21,7 +21,7 @@ ADD schema.yaml /tmp/schema.yaml
 #     && mv /tmp/schema.yaml.new /tmp/schema.yaml
 
 # Provide default value for tester image.
-ARG TESTER_IMAGE
+# ARG TESTER_IMAGE
 ADD apptest/deployer/schema.yaml /tmp/apptest/schema.yaml
 # RUN cat /tmp/apptest/schema.yaml \
 #     | env -i "TESTER_IMAGE=$TESTER_IMAGE" envsubst \

@@ -6,8 +6,9 @@ replicaCount: 1
 
 image:
   # Note: This value is parameterized via schema.yaml, and will be overriden at runtime.
+  #repo: gcr.io/silent-vim-415621/redis
   repo: gcr.io/silent-vim-415621/redis
-  tag: latest
+  tag: 0.1
   pullPolicy: IfNotPresent
 
 service:

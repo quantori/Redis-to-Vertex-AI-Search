@@ -22,10 +22,6 @@ spec:
         - name: "{{ .Chart.Name }}"
           image: "{{ .Values.image.repo }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

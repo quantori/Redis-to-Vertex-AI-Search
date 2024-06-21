@@ -10,7 +10,7 @@ properties:
       type: NAMESPACE
   image.image:
     type: string
-    default: gcr.io/silent-vim-415621/redis:latest
+    default: gcr.io/silent-vim-415621/redis:0.1
     x-google-marketplace:
       type: IMAGE
       image:
