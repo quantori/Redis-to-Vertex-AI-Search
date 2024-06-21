@@ -30,6 +30,14 @@ ADD apptest/deployer/schema.yaml /tmp/apptest/schema.yaml
 
 
 FROM gcr.io/cloud-marketplace-tools/k8s/deployer_helm
+
+RUN apt-get update && apt-get upgrade -y
+RUN rm -rf /opt/kubectl/*
+RUN rm -rf /bin/helm-downloaded/linux-amd64/helm
+RUN mkdir -p /opt/kubectl/1.30.2 && wget -q -O /opt/kubectl/1.30.2/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.30.2/bin/linux/amd64/kubectl && chmod 755 /opt/kubectl/1.30.2/kubectl
+RUN ln -s /opt/kubectl/1.30.2 /opt/kubectl/default
+RUN mkdir -p /bin/helm-downloaded && wget -q -O /bin/helm-downloaded/helm.tar.gz https://get.helm.sh/helm-v3.15.2-linux-amd64.tar.gz && tar -zxvf /bin/helm-downloaded/helm.tar.gz -C /bin/helm-downloaded && mv /bin/helm-downloaded/linux-amd64/helm /bin/ && rm -rf /bin/helm-downloaded
+
 COPY --from=build /tmp/redis-to-vertex-ai-search.tar.gz /data/chart/
 COPY --from=build /tmp/test/redis-to-vertex-ai-search.tar.gz /data-test/chart/
 COPY apptest/deployer/schema.yaml /data-test/
